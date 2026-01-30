@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,87 +7,362 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>THE HOTTEST FASHION PREMIER</title>
     <style>
-        /* Basic reset and font */
+         :root {
+            --accent: #ff4f81;
+            --accent-light: #ff7aa0;
+            --accent-dark: #e43c6e;
+            --bg-1: #0b0b0b;
+            --bg-2: #1a1a1a;
+            --card-bg: #111;
+            --muted: #ccc;
+            --card-gap: 20px;
+            --anim-speed: 600ms;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+        }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        /* Page background and text */
         
         body {
-            background: linear-gradient(#0b0b0b, #1a1a1a);
+            background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
             color: #f4f4f4;
             min-height: 100vh;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            position: relative;
         }
-        /* Header with simple logo */
+        /* Animated Fashion Background */
+        
+        .fashion-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .fashion-item {
+            position: absolute;
+            opacity: 0.03;
+            animation: float 25s infinite linear;
+        }
+        
+        .fashion-item:nth-child(1) {
+            top: 5%;
+            left: 10%;
+            font-size: 4rem;
+            color: var(--accent);
+            animation-delay: 0s;
+            animation-duration: 30s;
+        }
+        
+        .fashion-item:nth-child(2) {
+            top: 15%;
+            right: 15%;
+            font-size: 3.5rem;
+            color: var(--gold);
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+        
+        .fashion-item:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            font-size: 5rem;
+            color: var(--silver);
+            animation-delay: 5s;
+            animation-duration: 40s;
+        }
+        
+        .fashion-item:nth-child(4) {
+            bottom: 10%;
+            right: 10%;
+            font-size: 4rem;
+            color: var(--accent-light);
+            animation-delay: 8s;
+            animation-duration: 32s;
+        }
+        
+        .fashion-item:nth-child(5) {
+            top: 40%;
+            left: 5%;
+            font-size: 3rem;
+            color: var(--gold);
+            animation-delay: 12s;
+            animation-duration: 38s;
+        }
+        
+        .fashion-item:nth-child(6) {
+            top: 50%;
+            right: 5%;
+            font-size: 4.5rem;
+            color: var(--silver);
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(10px) rotate(10deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        /* Enhanced CENTERED Header */
         
         header {
-            background: #ff4f81;
+            background: linear-gradient(135deg, rgba(11, 11, 11, 0.9), rgba(26, 26, 26, 0.9));
             color: #fff;
-            padding: 14px;
+            padding: 25px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--accent);
+            text-align: center;
+            gap: 15px;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 79, 129, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .header-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 2rem;
+            box-shadow: 0 6px 20px rgba(255, 79, 129, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 79, 129, 0.6);
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+        }
+        
+        .logo:hover::after {
+            animation: slide 0.6s;
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .brand-text h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1.5px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+        
+        .brand-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-style: italic;
+            color: var(--muted);
+            max-width: 600px;
+            line-height: 1.4;
+        }
+        
+        .header-social {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
         }
         
-        .logo {
-            width: 44px;
-            height: 44px;
-            background: #fff;
-            color: #ff4f81;
+        .social-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+            color: var(--accent);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
         
-        header h1 {
-            font-size: 20px;
+        .social-icon:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
         }
-        
-        header p {
-            font-size: 12px;
-            opacity: 0.95;
-        }
-        /* Trending title */
         
         .trending-title {
-            margin: 18px auto;
-            padding: 10px;
-            background: #222;
-            color: #ff4f81;
-            border-radius: 6px;
-            width: 80%;
-            max-width: 500px;
+            margin: 25px auto;
+            padding: 15px;
+            background: linear-gradient(90deg, rgba(34, 34, 34, 0.8), rgba(17, 17, 17, 0.8));
+            color: var(--accent);
+            border-radius: 10px;
+            width: 85%;
+            max-width: 600px;
             text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid var(--accent);
+            border-right: 4px solid var(--accent);
         }
-        /* Simple nav */
+        
+        .trending-title::before {
+            content: '🔥';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .trending-title::after {
+            content: '🔥';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        /* Enhanced Navigation */
         
         nav {
-            background: #333;
-            padding: 10px;
+            background: linear-gradient(90deg, rgba(34, 34, 34, 0.95), rgba(17, 17, 17, 0.95));
+            padding: 14px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 79, 129, 0.2);
         }
         
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 8px;
+            margin: 0 15px;
             font-weight: 600;
+            transition: color 180ms ease, transform 160ms ease;
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 79, 129, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        nav a:hover::before {
+            left: 100%;
         }
         
         nav a:hover {
-            color: #ff4f81;
+            color: var(--accent);
+            transform: translateY(-3px);
+            background: rgba(255, 79, 129, 0.1);
         }
-        /* Grid layout for cards */
+        
+        nav a.active {
+            color: var(--accent);
+            background: rgba(255, 79, 129, 0.15);
+            box-shadow: 0 4px 12px rgba(255, 79, 129, 0.2);
+        }
         
         main {
             padding: 20px;
@@ -94,23 +370,50 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
+            gap: var(--card-gap);
         }
-        /* Card basics */
         
         .card {
-            background: #111;
-            border-radius: 10px;
+            background: linear-gradient(145deg, rgba(17, 17, 17, 0.9), rgba(10, 10, 10, 0.9));
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
+            transform-origin: center;
+            transition: box-shadow 220ms ease, transform 220ms ease;
+            will-change: transform, opacity;
+            opacity: 0;
+            transform: translateY(16px) scale(0.995);
+            animation: slideUp var(--anim-speed) cubic-bezier(.2, .9, .2, 1) forwards;
+            border: 1px solid rgba(255, 79, 129, 0.1);
+            position: relative;
+        }
+        
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 79, 129, 0.05), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         
         .image-container {
             position: relative;
             height: 180px;
             overflow: hidden;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.45));
         }
         
         .card-image {
@@ -118,6 +421,13 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 450ms cubic-bezier(.2, .9, .2, 1);
+            transform-origin: center;
+            will-change: transform;
+        }
+        
+        .card:hover .card-image {
+            transform: scale(1.08) translateZ(0);
         }
         
         .overlay {
@@ -126,131 +436,227 @@
             top: 12px;
             background: rgba(0, 0, 0, 0.7);
             color: #fff;
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 13px;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 12px;
+            border-radius: 18px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+            z-index: 2;
+        }
+        
+        .badge.hot {
+            background: linear-gradient(135deg, #ff6b3d, #ff8e6b);
+        }
+        
+        .badge.new {
+            background: linear-gradient(135deg, #21c1a6, #2de5c8);
         }
         
         .card-content {
-            padding: 12px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             flex: 1;
+            z-index: 2;
+            position: relative;
         }
         
         .card h2 {
-            color: #ff4f81;
-            font-size: 16px;
-            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 17px;
+            margin-bottom: 10px;
+            letter-spacing: .2px;
+            line-height: 1.3;
         }
         
         .card p {
-            color: #ccc;
+            color: var(--muted);
             font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             flex: 1;
+            line-height: 1.5;
         }
         
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 10px;
-            border-top: 1px solid #222;
+            padding-top: 12px;
+            border-top: 1px solid rgba(34, 34, 34, 0.8);
             margin-top: 10px;
         }
         
         .category {
-            background: #ff4f81;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
             color: #fff;
-            padding: 4px 8px;
-            border-radius: 10px;
+            padding: 5px 12px;
+            border-radius: 12px;
             font-size: 12px;
+            font-weight: 600;
+            transition: transform 220ms ease, box-shadow 220ms ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .card:hover .category {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 79, 129, 0.3);
         }
         
         .date {
             color: #aaa;
             font-size: 12px;
         }
-        /* Hover effect kept simple */
         
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-        /* Footer */
         
         footer {
-            background: #222;
+            background: linear-gradient(135deg, rgba(34, 34, 34, 0.95), rgba(17, 17, 17, 0.95));
             color: #ddd;
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 3px solid var(--accent);
         }
         
         #contact {
-            max-width: 600px;
-            margin: 0 auto 12px;
-            padding: 12px;
-            background: #111;
-            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto 20px;
         }
-        /* Responsive tweaks */
         
-        @media (max-width: 600px) {
+        #contact h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        #contact p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+        
+        footer>p {
+            margin-top: 20px;
+            color: #999;
+            font-size: 0.9rem;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .brand-text h1 {
+                font-size: 2rem;
+            }
+            .logo {
+                width: 60px;
+                height: 60px;
+                font-size: 1.7rem;
+            }
+            nav a {
+                margin: 0 8px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            main {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 20px 10px;
+                gap: 10px;
+            }
+            .brand-text h1 {
+                font-size: 1.6rem;
+            }
+            .logo {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .brand-text p {
+                font-size: 0.9rem;
+            }
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 5px auto;
+                width: 80%;
+                max-width: 200px;
+            }
             main {
                 grid-template-columns: 1fr;
-                padding: 12px;
             }
-            header h1 {
-                font-size: 18px;
-            }
-            .trending-title {
-                width: 95%;
-            }
-        }
-        
-        .presenter-badge {
-            margin-right: auto;
-            margin-left: 20px;
-            color: #ff80ab;
-            font-weight: bold;
-            padding: 5px 15px;
-            background: rgba(255, 64, 129, 0.1);
-            border-radius: 20px;
-            font-size: 0.9rem;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">HFP</div>
-        <div>
-            <h1>🔥 Hottest Fashion Premier🔥</h1>
-            <p><em>Where Dreams Meet Reality </em></p>
+    <!-- Animated Fashion Background -->
+    <div class="fashion-bg">
+        <div class="fashion-item">👗</div>
+        <div class="fashion-item">👠</div>
+        <div class="fashion-item">👜</div>
+        <div class="fashion-item">👒</div>
+        <div class="fashion-item">💎</div>
+        <div class="fashion-item">👔</div>
+    </div>
 
+    <header>
+        <div class="header-center">
+            <div class="logo-container">
+                <div class="logo">HFP</div>
+            </div>
+            <div class="brand-text">
+                <h1>🔥 Hottest Fashion Premier 🔥</h1>
+                <p><em>Where Dreams Meet Reality</em></p>
+            </div>
+            <div class="header-social">
+                <div class="social-icon">📸</div>
+                <div class="social-icon">📱</div>
+                <div class="social-icon">🎥</div>
+            </div>
         </div>
     </header>
 
     <h1 class="trending-title">TRENDING NOW</h1>
 
     <nav>
-        <a href="index.html">Back Home</a>
+        <a href="index.html" class="active">Back Home</a>
         <a href="trends.html">Trends</a>
         <a href="#">Designers</a>
         <a href="#">Street Style</a>
+        <a href="#">Runway</a>
         <a href="#">Contact</a>
-        <div class="presenter-badge">
-            By: [Miss Makanta]
-        </div>
     </nav>
 
     <main>
+        <!-- All your article cards remain exactly the same as before -->
         <!-- Article 1 -->
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Bold Prints</div>
+                <div class="badge hot">HOT</div>
                 <img src="Fashion Images/summer 2.jfif" alt="Summer Fashion" class="card-image">
             </div>
             <div class="card-content">
@@ -267,6 +673,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Streetluxe</div>
+                <div class="badge new">NEW</div>
                 <img src="Fashion Images/Streetwear.jfif" alt="Street Style" class="card-image">
             </div>
             <div class="card-content">
@@ -363,7 +770,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Menswear</div>
-                <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Mens Fashion" class="card-image">
+                <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Mens Fashion" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Men's Fashion Evolution</h2>
@@ -379,7 +786,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Vintage</div>
-                <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=711&q=80" alt="Vintage Fashion" class="card-image">
+                <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?ixlib=rb-4.0.3&auto=format&fit=crop&w=711&q=80" alt="Vintage Fashion" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Vintage Revival</h2>
@@ -411,7 +818,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Athleisure</div>
-                <img src="https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Athleisure" class="card-image">
+                <img src="https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Athleisure" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Athleisure: Beyond the Gym</h2>
@@ -427,7 +834,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">ColorTrend</div>
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Color Trends" class="card-image">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Color Trends" class="card-image">
             </div>
             <div class="card-content">
                 <h2>2026 Color Palette Trends</h2>
@@ -443,7 +850,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Evening</div>
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=720&q=80" alt="Evening Wear" class="card-image">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=720&q=80" alt="Evening Wear" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Evening Wear Reinvented</h2>
@@ -459,7 +866,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Minimal</div>
-                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Minimalist Fashion" class="card-image">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Minimalist Fashion" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Minimalist Wardrobe Essentials</h2>
@@ -475,7 +882,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Texture</div>
-                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Textures in Fashion" class="card-image">
+                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" alt="Textures in Fashion" class="card-image">
             </div>
             <div class="card-content">
                 <h2>The Power of Texture</h2>
@@ -487,11 +894,11 @@
             </div>
         </article>
 
-        <!-- Article 16 -->
+        <!-- Article 16  -->
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Global</div>
-                <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=711&q=80" alt="Global Fashion" class="card-image">
+                <img src="https://picsum.photos/id/1005/1200/800" alt="Global Fashion" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Global Fashion Influences</h2>
@@ -507,7 +914,7 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">Footwear</div>
-                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Shoes" class="card-image">
+                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Shoes" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Shoe Trends Walking Forward</h2>
@@ -523,13 +930,13 @@
         <article class="card">
             <div class="image-container">
                 <div class="overlay">TechWear</div>
-                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Tech Fashion" class="card-image">
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Tech Fashion" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Fashion Meets Technology</h2>
                 <p>Smart fabrics, wearable tech, and digital fashion are revolutionizing how we dress.</p>
                 <div class="card-footer">
-                    <span class="category"> Innovation</span>
+                    <span class="category">Innovation</span>
                     <span class="date">Feb 20</span>
                 </div>
             </div>
@@ -546,24 +953,27 @@
                 <p>Analyzing red carpet looks and everyday styles of fashion-forward celebrities.</p>
                 <div class="card-footer">
                     <span class="category">Celebrity</span>
-                    <span class="date">Feb 19</span></div>
+                    <span class="date">Feb 19</span>
+                </div>
             </div>
         </article>
 
-        <!-- Article 20 -->
+        <!-- Article 20  -->
         <article class="card">
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=720&q=80" alt="Future Fashion" class="card-image">
+                <img src="https://picsum.photos/id/1001/1200/800" alt="Future Fashion" class="card-image">
             </div>
             <div class="card-content">
                 <h2>Future of Fashion: Predictions</h2>
                 <p>Where fashion is headed in the next decade with AI, sustainability, and changing consumer habits.</p>
                 <div class="card-footer">
-                    <span class="category">overlay</span>
-                    <span class="date">Feb 18</span> </div>
+                    <span class="category">Future</span>
+                    <span class="date">Feb 18</span>
+                </div>
             </div>
         </article>
     </main>
+
     <footer>
         <section id="contact">
             <h2>Contact</h2>
@@ -577,6 +987,5 @@
     </footer>
 
 </body>
-
 
 </html>
